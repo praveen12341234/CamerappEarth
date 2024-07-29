@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.cameraapp">
+
+    <!-- Permissions required by the app -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <!-- Feature declarations -->
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.CameraApp">
+
+        <!-- SplashActivity as the launcher activity -->
+        <activity android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- MainActivity declaration -->
+        <activity android:name=".MainActivity"
+            android:exported="true"/>
+
+        <!-- AlbumActivity declaration -->
+        <activity android:name=".AlbumActivity"
+            android:exported="true"/>
+
+        <!-- PreviewActivity declaration -->
+        <activity android:name=".PreviewActivity"
+            android:exported="true"/>
+
+        <!-- FileProvider for sharing images securely -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.cameraapp.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file" />
+        </provider>
+
+    </application>
+</manifest>
